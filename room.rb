@@ -8,27 +8,30 @@ def initialize(name, entry_fee, songs)
   @entry_fee = entry_fee
   @guests = []
   @songs = [@song1, @song2]
-
+#outside area? []
 end
 
 def check_in_guest(guest)
   @guests << guest
 end
 
+
+##############################################
+def check_out_guest(guests)
+  p "_____________CHECK OUT GUEST________"
+  p "There Were #{@guests.length} guests..."
+  @guests.shift
+  p "Theres now #{@guests.length} guests..."
+end
+
 def check_in_song(song)
+  p "________CHECK IN SONG________"
   p "There Were #{@songs.length} songs..."
   @songs << song
   p "Theres now #{@songs.length} songs..."
 end
 
-#
-# def check_out_guest
-#   ###########
-# end
-#
-# def add_song
-#   ###########
-# end
+
 end # class end
 
 
