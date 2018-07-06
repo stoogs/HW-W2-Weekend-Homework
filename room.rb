@@ -7,14 +7,18 @@ def initialize(name, entry_fee, songs)
   @name = name
   @entry_fee = entry_fee
   @guests = []
-  @songs = [@song1]
+  @songs = [@song1, @song2]
 
 end
 
 def check_in_guest(guest)
   @guests << guest
-    @guests << guest
+end
 
+def check_in_song(song)
+  p "There Were #{@songs.length} songs..."
+  @songs << song
+  p "Theres now #{@songs.length} songs..."
 end
 
 #

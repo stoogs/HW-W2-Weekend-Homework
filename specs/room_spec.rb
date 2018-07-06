@@ -10,13 +10,21 @@ class RoomTest < MiniTest::Test
 def setup
     @client1 = Guest.new("Ted", 100, "Hurricane")
     @song1 = Song.new("Bob Dylan", "Hurricane", "waaaaa")
-    @room1 = Room.new("The F*ck Bunker", 20, @songs )
+    @song2 = Song.new("Kevin Morby", "Aboard My Train", "Heee")
+    @room1 = Room.new("Barrowlands", 20, @songs)
 end
 
 def test_check_in_guest
   @room1.check_in_guest(@client1)
   check = @room1.guests.length
-  assert_equal(2 , check)
+  assert_equal(1 , check)
+end
+
+def test_put_songs_in_room
+  @room1.check_in_song(@song1)
+
+  check = @room1.songs.length
+  assert_equal(3 , check)
 end
 
 # def test_check_out_guest
