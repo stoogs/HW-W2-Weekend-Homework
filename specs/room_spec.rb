@@ -33,9 +33,7 @@ end
 
 ####################################################
 def test_check_in_guest
-
   @room1.check_in_guest(@client1)
-
   assert_equal(1 , @room1.guests.length)
 end
 
@@ -73,25 +71,15 @@ def test_room_fill_to_capacity
 end
 
 def test_wohoo_songs_true_lobby
-assert_equal(true ,@room1.wohoo_songs(@songs, @lobby)) #find if fav song in room
+  assert_equal(true ,@room1.wohoo_songs(@songs, @lobby)) #find if fav song in room
 end
 
 def test_wohoo_songs_false_lobby
-assert_equal(false ,@room1.wohoo_songs(@songs2, @lobby)) #find if fav song in room
+  assert_equal(false ,@room1.wohoo_songs(@songs2, @lobby)) #find if fav song in room
 end
 
 def test_noooo_songs_individual_guest
-assert_equal(true ,@room1.noooo_song(@song11, @client2)) #fav song / room mismatch
+  assert_equal(true ,@room1.noooo_song(@song11, @client2)) #fav song / room mismatch
 end
-
-# def test_room_has_guest_fav_song
-#   @room1.room_party_too_big(@lobby)  # put party in the room
-#   p room_has_guest_fav_song
-# end
-
-
-
-
-
 
 end # class end

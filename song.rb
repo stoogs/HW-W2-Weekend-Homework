@@ -1,4 +1,3 @@
-#require_relative('customer')
 class Song
 
 attr_reader :artist, :song_name, :lyrics
@@ -9,20 +8,20 @@ def initialize (artist, song_name, lyrics)
   @lyrics = lyrics
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 end # class end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

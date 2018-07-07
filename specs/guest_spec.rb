@@ -8,7 +8,6 @@ def setup
   @guest1 = Guest.new("Ted", 100, "Hurricane")
 end
 
-
 def test_guest_name
   assert_equal("Ted", @guest1.name)
 end

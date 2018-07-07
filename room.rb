@@ -1,4 +1,3 @@
-#require_relative('customer')
 class Room
 
   attr_reader :name, :entry_fee, :guests, :songs, :lobby, :money
@@ -34,8 +33,8 @@ class Room
   def add_in_song(song)
     puts puts
     p "________CHECK IN SONG________"
+    p "There were #{@songs.length} songs..."
     p "Song #{song.song_name} was added"
-    p "There Were #{@songs.length} songs..."
     @songs << song
     p "Theres now #{@songs.length} songs..."
   end
@@ -92,86 +91,28 @@ class Room
     end
   end
 
-    def wohoo_songs(songs, lobby)
-      puts puts
-      p "__________ROOM SONGS____________"
-      room_songs = []
-      songs.map { |song| room_songs << song.song_name }
-      p room_songs
-      p "__CHECK IF GUEST FAV SONG THERE__"
-      fav_song_list = []
-      lobby.map {|guest| fav_song_list << guest.favourite_song }
-      p fav_song_list
-      check = room_songs.all? { |room_song| fav_song_list.include?(room_song) }
-      puts "WOOHOOO!!!" if check == true
-      p check == true
-      return check == true
-    end
+  def wohoo_songs(songs, lobby)
+    puts puts
+    p "__________ROOM SONGS____________"
+    room_songs = []
+    songs.map { |song| room_songs << song.song_name }
+    p room_songs
+    p "__CHECK IF GUEST FAV SONG THERE__"
+    fav_song_list = []
+    lobby.map {|guest| fav_song_list << guest.favourite_song }
+    p fav_song_list
+    check = room_songs.all? { |room_song| fav_song_list.include?(room_song) }
+    puts "WOOHOOO!!!" if check == true
+    p check == true
+    return check == true
+  end
 
-    def noooo_song(song, guest)
-      puts puts
-      p "__CONFIRM GUEST FAV SONG NOT THERE__"
-      p guest.favourite_song != song.song_name
-      p "Room song is #{song.song_name} ... Guest favourite song #{guest.favourite_song} not there."
-      return guest.favourite_song != song.song_name
-    end
-
-
-
-
-
-
-
-
-
-
-    # def get_customer_fav_songs(lobby, room_songs)
-    #   p "_____GUEST FAV SONGS_______"
-    #   guest_faves = []
-    #   lobby.map { |guest| guest_faves << guest.favourite_song }
-    #   p guest_faves
-    # end
-    # def room_has_guest_fav_song()
-    # p "ROOM HAS GUEST FAV SONG?"
-    #
-    # end
-
-    # --------------------------------------------------------------
-    #   p "______ROOM CAPACITY_______"
-    #   p "Guest size #{@guests.length}  ---"
-    #   p  "Space available = #{@room_size}"
-    #   while guests.length < @room_size
-    #   @guests << @guest1
-    #   p "Guest size #{@guests.length}  ---"
-    # end
-    #   p guests.each {|guest| p guest }
-    #   p "Room now at MAX Capacity #{guests.length} / #{@room_size}"
-    # end
-
-
-
-
-
+  def noooo_song(song, guest)
+    puts puts
+    p "__CONFIRM GUEST FAV SONG NOT THERE__"
+    p guest.favourite_song != song.song_name
+    p "Room song is #{song.song_name} ... Guest favourite song #{guest.favourite_song} not there."
+    return guest.favourite_song != song.song_name
+  end
 
 end # class end
-
-# test = Empty.new("Harry", 50)
-#
-# p test.name         # --> "Harry"    ## Reader works only
-#   test.name = "Sally"
-# p test.name         # --> "Sally"    ## Only accessor works from here on...
-#
-# def change_name
-#   @name = "Joe"
-# end
-#
-# test.change_name
-# p test.name         # --> "Joe"
-#
-#
-# end #class end
-# test_outside = Empty.new("Outside Man", 33)
-# p test_outside.name
-#
-# test_outside.name = "New Man"
-# p test_outside.name
