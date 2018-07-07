@@ -2,12 +2,12 @@
 class Room
 
   attr_reader :name, :entry_fee, :guests, :songs, :lobby, :money
-  #attr_accessor :guests
+
   def initialize(name, entry_fee, songs, room_size)
     @name = name
     @entry_fee = entry_fee
     @guests = []
-    @songs = [@song1, @song2, @song3]
+    @songs = []
     @room_size = room_size
     @lobby = []
   end
@@ -20,6 +20,7 @@ class Room
     p "There Were #{@guests.length} guests..."
     @guests << guest
     p "Theres now #{@guests.length} guests..."
+
   end
 
   def check_out_guest(guests)
@@ -89,6 +90,26 @@ class Room
     lobby.each do |name| turned_away = name.name
       p "#{turned_away} Can't go in, go home #{turned_away}"
     end
+  end
+
+
+    def get_room_songs(songs)
+      p "_____ROOM SONGS_______"
+      room_songs = []
+      songs.map { |song| room_songs << song.song_name }
+      p room_songs
+    end
+
+    def get_customer_fav_songs(lobby)
+      p "_____GUEST FAV SONGS_______"
+      guest_faves = []
+      lobby.map { |guest| guest_faves << guest.favourite_song }
+      p guest_faves
+    end
+    # def room_has_guest_fav_song()
+    # p "ROOM HAS GUEST FAV SONG?"
+    #
+    # end
 
     # --------------------------------------------------------------
     #   p "______ROOM CAPACITY_______"
@@ -101,12 +122,9 @@ class Room
     #   p guests.each {|guest| p guest }
     #   p "Room now at MAX Capacity #{guests.length} / #{@room_size}"
     # end
-  end
 
-  # def room_has_guest_fav_song()
-  # p "ROOM HAS GUEST FAV SONG?"
-  #
-  # end
+
+
 
 
 
