@@ -92,20 +92,45 @@ class Room
     end
   end
 
-
-    def get_room_songs(songs)
-      p "_____ROOM SONGS_______"
+    def wohoo_songs(songs, lobby)
+      puts puts
+      p "__________ROOM SONGS____________"
       room_songs = []
       songs.map { |song| room_songs << song.song_name }
       p room_songs
+      p "__CHECK IF GUEST FAV SONG THERE__"
+      fav_song_list = []
+      lobby.map {|guest| fav_song_list << guest.favourite_song }
+      p fav_song_list
+      check = room_songs.all? { |room_song| fav_song_list.include?(room_song) }
+      puts "WOOHOOO!!!" if check == true
+      p check == true
+      return check == true
     end
 
-    def get_customer_fav_songs(lobby)
-      p "_____GUEST FAV SONGS_______"
-      guest_faves = []
-      lobby.map { |guest| guest_faves << guest.favourite_song }
-      p guest_faves
+    def noooo_song(song, guest)
+      puts puts
+      p "__CONFIRM GUEST FAV SONG NOT THERE__"
+      p guest.favourite_song != song.song_name
+      p "Room song is #{song.song_name} ... Guest favourite song #{guest.favourite_song} not there."
+      return guest.favourite_song != song.song_name
     end
+
+
+
+
+
+
+
+
+
+
+    # def get_customer_fav_songs(lobby, room_songs)
+    #   p "_____GUEST FAV SONGS_______"
+    #   guest_faves = []
+    #   lobby.map { |guest| guest_faves << guest.favourite_song }
+    #   p guest_faves
+    # end
     # def room_has_guest_fav_song()
     # p "ROOM HAS GUEST FAV SONG?"
     #

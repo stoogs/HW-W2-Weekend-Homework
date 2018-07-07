@@ -23,6 +23,11 @@ def setup
   @song4 = Song.new("The Pretenders", "Brass In Pocket", "ah oh ohh ohhhhoohh")
   @songs = [@song1, @song2, @song3, @song4]
   @lobby = [@client1, @client2,@client3, @client4, @client5]
+  @song11 = Song.new("Bob Dylan", "hotdog", "waaaaa")
+  @song22 = Song.new("Kevin Morby", "not hotdog", "Heee")
+  @song33 = Song.new("Radiohead", "hotdog", "plingplong")
+  @song44 = Song.new("The Pretenders", "not hotdog", "ah oh ohh ohhhhoohh")
+  @songs2 = [@song11, @song22, @song33, @song44]
 end
 
 
@@ -67,11 +72,17 @@ def test_room_fill_to_capacity
   assert_equal(3, @room1.guests.length)
 end
 
-def test_get_room_songs
-@room1.get_room_songs(@songs) #make guest fav songs array
-assert_equal(1,1)
+def test_wohoo_songs_true_lobby
+assert_equal(true ,@room1.wohoo_songs(@songs, @lobby)) #find if fav song in room
 end
 
+def test_wohoo_songs_false_lobby
+assert_equal(false ,@room1.wohoo_songs(@songs2, @lobby)) #find if fav song in room
+end
+
+def test_noooo_songs_individual_guest
+assert_equal(true ,@room1.noooo_song(@song11, @client2)) #fav song / room mismatch
+end
 
 # def test_room_has_guest_fav_song
 #   @room1.room_party_too_big(@lobby)  # put party in the room
