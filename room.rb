@@ -1,8 +1,8 @@
 #require_relative('customer')
 class Room
 
-  attr_reader :name, :entry_fee, :guests, :songs, :lobby
-  attr_accessor :money, :guests
+  attr_reader :name, :entry_fee, :guests, :songs, :lobby, :money
+  #attr_accessor :guests
   def initialize(name, entry_fee, songs, room_size)
     @name = name
     @entry_fee = entry_fee
@@ -30,7 +30,7 @@ class Room
     p "Theres now #{@guests.length} guests..."
   end
 
-  def check_in_song(song)
+  def add_in_song(song)
     puts puts
     p "________CHECK IN SONG________"
     p "Song #{song.song_name} was added"
@@ -42,11 +42,11 @@ class Room
   def entry_fee(client)
     puts puts
     p "____CUSTOMER CHARGED ENTRY FEE________"
-    p "Customers money before entry_fee is 100?"
-    p client.money
+    p "Room costs #{@entry_fee}, #{client.name} has #{client.money}..."
+
     client.money -= @entry_fee #attr_acc: money
-    p "Customers wallet after entry_fee is 80?"
-    p client.money
+    p "#{client.name} paid #{@entry_fee} and has *#{client.money}* left"
+
   end
 
   def entry_fee_check(client2)

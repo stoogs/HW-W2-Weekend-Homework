@@ -27,7 +27,6 @@ end
 
 ####################################################
 def test_check_in_guest
-  p "_____________CHECK IN GUEST________"
   @room1.check_in_guest(@client1)
   assert_equal(1 , @room1.guests.length)
 end
@@ -38,8 +37,8 @@ def test_check_out_guest
   assert_equal(0 , @room1.guests.length)
 end
 
-def test_check_in_song
-  @room1.check_in_song(@song1)
+def test_add_in_song
+  @room1.add_in_song(@song1)
   assert_equal(4 , @room1.songs.length)
 end
 
@@ -50,12 +49,12 @@ end
 
 def test_entry_fee_check
   @room1.entry_fee_check(@client2)
-  assert_equal(15, @client2.money)
+  assert_equal(15, @client2.money)  #client cant get in. only has 15 money
 end
 
 def test_room_party_too_big
   @room2.room_party_too_big(@lobby)
-  assert_equal(nil, @length)
+  assert_equal(5, @lobby.length)  #lobby has 5 clients in array
 end
 
 def test_room_fill_to_capacity
