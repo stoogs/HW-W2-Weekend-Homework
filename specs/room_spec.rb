@@ -28,23 +28,19 @@ end
 ####################################################
 def test_check_in_guest
   p "_____________CHECK IN GUEST________"
-  p @song1.artist
   @room1.check_in_guest(@client1)
-  check = @room1.guests.length
-  assert_equal(1 , check)
+  assert_equal(1 , @room1.guests.length)
 end
 
 def test_check_out_guest
   @room1.check_in_guest(@client1)
   @room1.check_out_guest(@guests)
-  check = @room1.guests.length
-  assert_equal(0 , check)
+  assert_equal(0 , @room1.guests.length)
 end
 
 def test_check_in_song
   @room1.check_in_song(@song1)
-  check = @room1.songs.length
-  assert_equal(4 , check)
+  assert_equal(4 , @room1.songs.length)
 end
 
 def test_entry_fee

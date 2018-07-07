@@ -52,15 +52,14 @@ class Room
   def entry_fee_check(client2)
     puts puts
     p "____IS CUSTOMER 2 SKINT________"
-    p "Customers money before entry_fee is 15?"
-    p client2.money
+    p "Room costs #{@entry_fee}, #{client2.name} only has #{client2.money}..."
     if client2.money >= @entry_fee
       client2.money -= @entry_fee #attr_acc: money
     else
-      p "Customers Denied Entry. Needs #{@entry_fee - client2.money} more money"
+      p "#{client2.name} Denied Entry. Needs *#{@entry_fee - client2.money}* more money"
       p client2.money
       @lobby << client2
-      p "Customer is back in the lobby"
+      p "#{client2.name} is turfed back into the lobby"
       p @lobby.length
     end
   end
