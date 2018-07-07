@@ -9,12 +9,14 @@ class RoomTest < MiniTest::Test
 def setup
                       #name   entry_fee  array   room_size
   @room1 = Room.new("Barrowlands", 20, @songs, 2)
-                    #name   wallet favourite_song
+                    #name   money favourite_song
   @client1 = Guest.new("Ted", 100, "Hurricane")
+  @client2 = Guest.new("Kevin", 15, "Brass In Pocket")
                     #artist      song_name    lyrics
   @song1 = Song.new("Bob Dylan", "Hurricane", "waaaaa")
   @song2 = Song.new("Kevin Morby", "Aboard My Train", "Heee")
   @song3 = Song.new("Radiohead", "No Surprises", "plingplong")
+  @song4 = Song.new("The Pretenders", "Brass In Pocket", "ah oh ohh ohhhhoohh")
 end
 
 
@@ -37,14 +39,17 @@ end
 def test_check_in_song
   @room1.check_in_song(@song1)
   check = @room1.songs.length
-  assert_equal(3 , check)
+  assert_equal(4 , check)
 end
 
 def test_entry_fee
   @room1.entry_fee(@client1)
-  assert_equal(80, 80)
+  assert_equal(80, @client1.money)
 end
 
-
+def test_entry_fee_check
+  @room1.entry_fee_check(@client2)
+  assert_equal(15, @client2.money)
+end
 
 end # class end

@@ -1,15 +1,15 @@
 #require_relative('customer')
 class Room
 
-  attr_reader :name, :entry_fee, :guests, :songs
+  attr_reader :name, :entry_fee, :guests, :songs, :holding_bay
   attr_accessor :money
 def initialize(name, entry_fee, songs, room_size)
   @name = name
   @entry_fee = entry_fee
   @guests = []
-  @songs = [@song1, @song2]
+  @songs = [@song1, @song2, @song3]
   @room_size = room_size
-#outside area? []
+  @holding_bay = []
 end
 
 
@@ -44,11 +44,24 @@ end
 def entry_fee(client)
   puts puts
   p "____CUSTOMER CHARGED ENTRY FEE________"
-  p "Customers money before entry_fee"
+  p "Customers money before entry_fee is 100?"
   p client.money
   client.money -= @entry_fee #attr_acc: money
-  p "Customers wallet after entry_fee"
+  p "Customers wallet after entry_fee is 80?"
   p client.money
+end
+
+def entry_fee_check(client2)
+  puts puts
+  p "____IS CUSTOMER 2 SKINT________"
+  p "Customers money before entry_fee is 15?"
+  p client2.money
+if client2.money >= @entry_fee
+  client2.money -= @entry_fee #attr_acc: money
+else
+  p "Customers Denied Entry. Needs #{@entry_fee - client2.money} more money"
+  p client2.money
+end
 end
 
 
